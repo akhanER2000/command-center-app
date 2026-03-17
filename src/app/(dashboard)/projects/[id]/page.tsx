@@ -1,8 +1,8 @@
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
-import { DashboardContent } from '@/components/DashboardContent'
+import { ProjectDetailContent } from '@/components/ProjectDetailContent'
 
-export default async function DashboardPage() {
+export default async function ProjectDetailPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -10,6 +10,5 @@ export default async function DashboardPage() {
     redirect('/login')
   }
 
-  return <DashboardContent />
+  return <ProjectDetailContent />
 }
-

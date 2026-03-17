@@ -4,69 +4,84 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  --color-background: #fafafa;
-  --color-foreground: #171717;
-  --color-card: #ffffff;
-  --color-card-foreground: #171717;
-  --color-primary: #3b82f6;
+  /* Light Theme (Lilac/Clean) */
+  --color-background: #f8f7ff;
+  --color-foreground: #1a1a2e;
+  --color-card: rgba(255, 255, 255, 0.8);
+  --color-card-foreground: #1a1a2e;
+  --color-primary: #6366f1;
   --color-primary-foreground: #ffffff;
-  --color-secondary: #f3f4f6;
-  --color-secondary-foreground: #111827;
-  --color-muted: #f3f4f6;
-  --color-muted-foreground: #6b7280;
-  --color-accent: #3b82f6;
+  --color-secondary: #e0e7ff;
+  --color-secondary-foreground: #4338ca;
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+  --color-accent: #a855f7;
   --color-accent-foreground: #ffffff;
-  --color-destructive: #ef4444;
-  --color-destructive-foreground: #ffffff;
-  --color-border: #e5e7eb;
-  --color-input: #e5e7eb;
-  --color-ring: #3b82f6;
-  --radius: 0.5rem;
+  --color-border: #e2e8f0;
+  --color-input: #ffffff;
+  --color-ring: #6366f1;
+  
+  /* Shared values */
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
 }
 
 :root {
-  --background: #fafafa;
-  --foreground: #171717;
+  --background: #f8f7ff;
+  --foreground: #1a1a2e;
 }
 
 .dark {
-  --color-background: #0a0a0a;
-  --color-foreground: #ededed;
-  --color-card: #171717;
-  --color-card-foreground: #ededed;
-  --color-primary: #3b82f6;
+  /* Deep Space/Purple Theme based on images */
+  --color-background: #03030b;
+  --color-foreground: #e2e8f0;
+  --color-card: rgba(15, 15, 30, 0.6);
+  --color-card-foreground: #ffffff;
+  --color-primary: #8b5cf6;
   --color-primary-foreground: #ffffff;
-  --color-secondary: #262626;
-  --color-secondary-foreground: #ffffff;
-  --color-muted: #262626;
-  --color-muted-foreground: #a3a3a3;
-  --color-accent: #3b82f6;
-  --color-accent-foreground: #ffffff;
-  --color-destructive: #ef4444;
-  --color-destructive-foreground: #ffffff;
-  --color-border: #262626;
-  --color-input: #262626;
-  --color-ring: #3b82f6;
+  --color-secondary: #1e1b4b;
+  --color-secondary-foreground: #c7d2fe;
+  --color-muted: #1a1a2e;
+  --color-muted-foreground: #94a3b8;
+  --color-accent: #2dd4bf;
+  --color-accent-foreground: #000000;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-input: #0f172a;
+  --color-ring: #8b5cf6;
+  
+  --background: #03030b;
+  --foreground: #e2e8f0;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 @layer components {
+  .glass {
+    @apply backdrop-blur-xl border border-border bg-card;
+  }
+  
   .btn {
-    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50;
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50 active:scale-95;
   }
+  
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+    @apply bg-primary text-primary-foreground shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] hover:-translate-y-0.5;
   }
+  
   .btn-outline {
-    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+    @apply border border-border bg-transparent hover:bg-muted text-foreground;
   }
-  .card {
-    @apply rounded-xl border border-border bg-card text-card-foreground shadow-sm;
+  
+  .card-premium {
+    @apply backdrop-blur-xl border border-border bg-card rounded-2xl p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_0_30px_rgba(139,92,246,0.1)];
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-blue-400;
   }
 }
-
